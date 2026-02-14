@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup Idea Platform - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <div class="navbar">
+    <h1>💡 Startup Idea Platform</h1>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <h2>Add New Idea</h2>
+  <form id="ideaForm">
+    <input type="text" id="title" placeholder="Idea Title" required>
+    <input type="text" id="description" placeholder="Idea Description" required>
+    <button type="submit">Add Idea</button>
+  </form>
+
+  <h2>Your Ideas</h2>
+  <div id="ideasContainer"></div>
+</div>
+
+<script src="js/ideas.js"></script>
+</body>
+</html>

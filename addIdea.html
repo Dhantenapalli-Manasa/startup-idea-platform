@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Idea</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Add New Startup Idea</h2>
+
+    <form id="ideaForm">
+      <input type="text" id="title" placeholder="Idea Title" required />
+      <textarea id="description" placeholder="Idea Description" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <a href="dashboard.html">Back to Dashboard</a>
+  </div>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    document.getElementById("ideaForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById("title").value;
+      const description = document.getElementById("description").value;
+
+      const res = await fetch("http://localhost:5000/api/ideas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ title, description })
+      });
+
+      if (res.ok) {
+        alert("Idea Added Successfully!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Error adding idea");
+      }
+    });
+  </script>
+
+</body>
+</html>
